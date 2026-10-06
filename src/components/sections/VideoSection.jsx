@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PrimaryButton from "../ui/PrimaryButton";
+import Container from "../ui/Container";
 
 const ease = [0.22, 1, 0.36, 1];
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
@@ -19,7 +20,7 @@ const points = [
 function VideoSection() {
   return (
     <section id="video" className="relative overflow-x-clip py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto grid w-full max-w-[1600px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-16">
+      <Container className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-12 ">
         {/* Content */}
         <motion.div
           variants={container}
@@ -77,7 +78,7 @@ function VideoSection() {
             loading="lazy"
           />
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

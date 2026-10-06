@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import FAQ from "../ui/FAQ";
+import Container from "../ui/Container";
 
 const ease = [0.22, 1, 0.36, 1];
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
@@ -35,7 +36,7 @@ const faqs = [
 function FaqSection() {
   return (
     <section id="faq" className="relative overflow-x-clip py-14 sm:py-16 lg:py-20">
-      <div className="mx-auto grid w-full max-w-[1600px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-16">
+      <Container className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-12">
         {/* Content */}
         <motion.div
           variants={container}
@@ -78,7 +79,7 @@ function FaqSection() {
             <FAQ items={faqs} />
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

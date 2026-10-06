@@ -2,26 +2,21 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+
 import PrimaryButton from "../ui/PrimaryButton";
+import { Link, NavLink } from "react-router";
 
 const ease = [0.22, 1, 0.36, 1];
 
 const Navbar = ({
   logo = "Brand.",
-  logoHref = "#home",
+  logoHref = "/",
   links = [],
   buttonText = "Get Started",
   showButton = true,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState(links[0]?.href || "");
-
   const closeMenu = () => setIsOpen(false);
-
-  const handleLinkClick = (href) => {
-    setActiveLink(href);
-    closeMenu();
-  };
 
   // Lock page scroll while the drawer is open, and close it with Escape
   useEffect(() => {
@@ -58,26 +53,25 @@ const Navbar = ({
         className="w-full bg-[#FAEDDD]"
       >
         <nav className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-5 sm:h-20 sm:px-6 lg:px-16">
-          <a
-            href={logoHref}
-            onClick={() => handleLinkClick(logoHref)}
+          <Link
+            to={logoHref}
+            onClick={closeMenu}
             className="font-heading text-xl font-bold text-black sm:text-2xl"
           >
             {logo}
-          </a>
+          </Link>
 
           {/* Desktop (lg and up — 6+ links get cramped on tablets) */}
           <div className="hidden items-center gap-6 lg:flex xl:gap-10">
             {links.map((link, index) => (
-              <a
+              <NavLink
                 key={link.id || index}
-                href={link.href}
-                onClick={() => handleLinkClick(link.href)}
-                aria-current={activeLink === link.href ? "page" : undefined}
-                className={`text-sm ${linkClass(activeLink === link.href)}`}
+                to={link.href}
+                end={link.href === "/"}
+                className={({ isActive }) => `text-sm ${linkClass(isActive)}`}
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
 
             {showButton && (
@@ -132,13 +126,13 @@ const Navbar = ({
             >
               {/* Drawer top bar — has its own close button so it works at any scroll position */}
               <div className="flex h-16 shrink-0 items-center justify-between sm:h-20">
-                <a
-                  href={logoHref}
-                  onClick={() => handleLinkClick(logoHref)}
+                <Link
+                  to={logoHref}
+                  onClick={closeMenu}
                   className="font-heading text-xl font-bold text-black sm:text-2xl"
                 >
                   {logo}
-                </a>
+                </Link>
                 <button
                   type="button"
                   onClick={closeMenu}
@@ -157,19 +151,24 @@ const Navbar = ({
                 variants={{ visible: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } } }}
               >
                 {links.map((link, index) => (
-                  <motion.a
+                  <motion.div
                     key={link.id || index}
-                    href={link.href}
-                    onClick={() => handleLinkClick(link.href)}
-                    aria-current={activeLink === link.href ? "page" : undefined}
                     variants={{
                       hidden: { opacity: 0, x: 20 },
                       visible: { opacity: 1, x: 0, transition: { duration: 0.35, ease } },
                     }}
-                    className={`border-b border-black/10 py-5 text-lg ${linkClass(activeLink === link.href)}`}
                   >
-                    {link.label}
-                  </motion.a>
+                    <NavLink
+                      to={link.href}
+                      end={link.href === "/"}
+                      onClick={closeMenu}
+                      className={({ isActive }) =>
+                        `block border-b border-black/10 py-5 text-lg ${linkClass(isActive)}`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  </motion.div>
                 ))}
               </motion.div>
 

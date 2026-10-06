@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Container from "../ui/Container";
 
 const ImageGridSection = ({
   title = "Our Work",
@@ -33,8 +34,8 @@ const ImageGridSection = ({
   };
 
   return (
-    <section className=" px-6 py-20 md:px-16 lg:py-28">
-      <div className="mx-auto max-w-[1600px]">
+    <section className="py-20 lg:py-28">
+      <Container className="">
 
         {/* Heading */}
         <motion.div
@@ -105,7 +106,7 @@ const ImageGridSection = ({
           ))}
         </motion.div>
 
-      </div>
+      </Container>
     </section>
   );
 };

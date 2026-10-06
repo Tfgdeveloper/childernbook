@@ -1,33 +1,36 @@
-import Footer from "./components/sections/Footer";
-import Navbar from "./components/sections/Navbar";
-import Home from "./pages/Home";
 
+import { MotionConfig } from "framer-motion";
+import Layout from "./components/layout/Layout";
+import { Route, Router, Routes } from "react-router";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Portfolio from "./pages/Portfolio";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import NotFound from "./pages/NotFound";
+import Service from "./pages/Service";
 
 
 
 function App() {
-  
   return (
-    <div className="min-h-screen bg-[#FAEDDD] text-neutral-900">
-      {/* Navbar */}
-      <Navbar logo="Logo Here"
-        links={[
-          { label: "Home", href: "#home" },
-          { label: "Services", href: "#services" },
-          { label: "About Us", href: "#about" },
-          { label: "Portfolio", href: "#faq" },
-          { label: "Reviews", href: "#faq" },
-          { label: "FAQ's", href: "#contact" },
-        ]}
-        buttonText="Get Started"
-        buttonHref="#contact"
-      />
-      <Home/>
-
-      
-      {/* Footer */}
-      <Footer/>
-    </div>
+      <MotionConfig reducedMotion="user">
+        <Routes>
+          {/* Every page inside Layout gets the Navbar + Footer */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Service />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </MotionConfig>
+    
   );
 }
 

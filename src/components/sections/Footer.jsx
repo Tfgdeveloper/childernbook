@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessagesSquare, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router"
 
 const ease = [0.22, 1, 0.36, 1];
 const viewport = { once: true, amount: 0.15 };
@@ -13,6 +14,7 @@ const fadeUp = {
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About us", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy-policy" },
@@ -143,12 +145,12 @@ export default function Footer() {
         >
           {/* Brand */}
           <motion.div variants={fadeUp}>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="font-serif text-3xl font-bold italic text-[#F29013] focus:outline-none focus-visible:underline sm:text-4xl"
             >
               Logo Here
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-300">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -162,9 +164,9 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className={linkClass}>
+                  <Link to={l.href} className={linkClass}>
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -176,12 +178,10 @@ export default function Footer() {
             <ul className="space-y-2">
               {services.map((s) => (
                 <li key={s}>
-                  <a
-                    href={`/services/${s.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                    className={linkClass}
-                  >
+                  {/* All services point to the Services page for now */}
+                  <Link to="/services" className={linkClass}>
                     {s}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

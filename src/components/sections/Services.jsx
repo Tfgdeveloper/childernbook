@@ -1,6 +1,7 @@
 import { BookOpen, PenTool, Sparkles } from "lucide-react";
 import Card from "../ui/Card";
 import { motion } from "framer-motion";
+import Container from "../ui/Container";
 
 
 
@@ -40,7 +41,7 @@ function Services() {
             className="bg-[#FFE6C7]"
         >
             <img src="images/vector.png" className="w-full"/>
-            <div className="mx-auto max-w-[1600px] px-6 md:px-12 py-10">
+            <Container className="py-10">
             {/* Section Heading */}
             {/* Heading */}
             <motion.div
@@ -93,7 +94,7 @@ function Services() {
                 
                 />
             </div>
-            </div>
+            </Container>
             <img src="images/vector.png" className="w-full rotate-180"/>
         </section>
     </>

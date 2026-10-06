@@ -33,12 +33,10 @@ import image9 from "../assets/book/9.png";
 import image10 from "../assets/book/10.png";
 import image11 from "../assets/book/11.png";
 import image12 from "../assets/book/12.png";
-import Navbar from "../components/sections/Navbar";
-import Footer from "../components/sections/Footer";
 
 
 
-function Home() {
+function Service() {
   
 
   const galleryImages = [
@@ -73,7 +71,17 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-[#FAEDDD] text-neutral-900">
-      <Hero/>
+      {/* Navbar */}
+      
+      <Hero
+        variant="page"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
+        badge="About Us"
+        title={<>We Bring <span className="font-bold italic">Stories</span> to Life</>}
+        description="We help aspiring authors turn their ideas into beautifully published children's books."
+        formTitle="Get a Free Consultation"
+        formDescription="Share a few details and we'll get back to you."
+      />
       <ImageGridSection title="Interior" highlightedtext="Illustrations" description="Explore our latest book designs and illustrations." images={galleryImages}/>
       <Services/>
       <VideoSection/>
@@ -91,4 +99,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Service;
