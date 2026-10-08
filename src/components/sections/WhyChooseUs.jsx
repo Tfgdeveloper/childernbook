@@ -86,7 +86,7 @@ function WhyChooseUs() {
           </ul>
 
           <motion.div variants={fadeUp} className="mt-8 flex justify-center lg:justify-start">
-            <PrimaryButton className="px-[32px] py-[16px]">Get Started</PrimaryButton>
+            <PrimaryButton openModal className="px-[32px] py-[16px]">Get Started</PrimaryButton>
           </motion.div>
         </motion.div>
       </Container>

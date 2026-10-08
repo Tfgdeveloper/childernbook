@@ -10,7 +10,7 @@ const Card = ({
 }) => {
   return (
     <div
-      className={`group rounded-2xl bg-[#F7DFC5] p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[#FAEDDD] ${className}`}
+      className={`group rounded-2xl  p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl  ${className}`}
     >
       {icon && (
         <div className="mb-6 flex w-15 items-center justify-center md:justify-start ">

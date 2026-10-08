@@ -17,9 +17,9 @@ const points = [
   "Support from your first idea to the finished book",
 ];
 
-function VideoSection() {
+function IntroSection() {
   return (
-    <section id="video" className="relative overflow-x-clip py-14 sm:py-16 lg:py-20">
+    <section id="video" className="relative overflow-x-clip pt-14 sm:pt-16 lg:pt-20">
       <Container className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-12 ">
         {/* Content */}
         <motion.div
@@ -83,4 +83,4 @@ function VideoSection() {
   );
 }
 
-export default VideoSection;
+export default IntroSection;

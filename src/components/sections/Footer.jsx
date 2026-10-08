@@ -127,10 +127,10 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative">
+    <footer className="relative bg-[#FAEDDD]">
       {/* Two-tone background behind the banner only */}
       <div className="relative py-6">
-        <div className="absolute inset-x-0 top-0 h-1/2 bg-[#fbe9d8]" aria-hidden="true" />
+        
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-black" aria-hidden="true" />
         <SubscribeBanner />
       </div>

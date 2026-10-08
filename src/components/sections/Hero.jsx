@@ -17,6 +17,18 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
 
+const layeredShadow = [
+    "inset 0 -2.39px 0 0 #DEEEFB",
+    "inset 0 0.8px 0 0 #FFFFFF",
+    "0 2.2px 1.76px 0 rgba(0, 88, 108, 0.0197)",
+    "0 5.29px 4.23px 0 rgba(0, 88, 108, 0.0283)",
+    "0 9.96px 7.96px 0 rgba(0, 88, 108, 0.0350)",
+    "0 17.78px 14.21px 0 rgba(0, 88, 108, 0.0417)",
+    "0 33.22px 26.57px 0 rgba(0, 88, 108, 0.0503)",
+    "0 79.51px 63.61px 0 rgba(0, 88, 108, 0.05)",
+    "0 2.39px 2.39px 0 rgba(0, 0, 0, 0.04)",
+].join(", ");
+
 /* ------------------------------------------------------------------ */
 /*  Shared bits                                                        */
 /* ------------------------------------------------------------------ */
@@ -24,7 +36,7 @@ function Badge({ children }) {
   return (
     <motion.span
       variants={fadeUp}
-      className="inline-block rounded-[10px] bg-[#F29013] px-3 py-2 font-['Montaga'] text-[10px] font-semibold uppercase tracking-[0.12em] text-black sm:text-[12px] sm:tracking-[0.2em]"
+      className="inline-block rounded-[10px] bg-[#F29013] px-3 py-2 font-['Montaga'] text-[10px] font-semibold tracking-[0.12em] text-black sm:text-[12px] sm:tracking-[0.2em]"
     >
       {children}
     </motion.span>
@@ -102,7 +114,7 @@ function HomeHero() {
               variants={fadeUp}
               className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start"
             >
-              <PrimaryButton className="px-[32px] py-[16px]">Get Started</PrimaryButton>
+              <PrimaryButton openModal className="px-[32px] py-[16px]">Get Started</PrimaryButton>
               <SecondaryButton>Explore Services</SecondaryButton>
             </motion.div>
 
@@ -181,7 +193,7 @@ function PageHero({
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          className="text-center lg:text-left"
+          className="relative text-center lg:text-left"
         >
           <Breadcrumbs items={breadcrumbs} />
           {badge && <Badge>{badge}</Badge>}
@@ -201,14 +213,28 @@ function PageHero({
               {description}
             </motion.p>
           )}
+          <motion.div
+              variants={fadeUp}
+              className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start"
+            >
+              <PrimaryButton openModal className="px-[32px] py-[16px]">Get Started</PrimaryButton>
+              <SecondaryButton>Explore Services</SecondaryButton>
+            </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-8 flex justify-center lg:justify-start">
+          <motion.div variants={fadeUp} className="mt-4 flex justify-center lg:justify-start">
             <img
               src="images/reviewslogo.png"
               alt="Rated by our clients on review platforms"
               className="h-auto max-w-full"
             />
           </motion.div>
+          <img
+              src="images/flower.png"
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 right-0 w-[40px] sm:w-[62px] lg:right-20"
+            />
+           
         </motion.div>
 
         {/* Form card — same storybook style as the modal */}
@@ -217,43 +243,31 @@ function PageHero({
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={viewport}
           transition={{ type: "spring", stiffness: 180, damping: 20, delay: 0.15 }}
-          className="mx-auto w-full max-w-lg lg:max-w-none"
+          className="relative mx-auto w-full max-w-lg lg:max-w-none"
         >
-          <div className="overflow-hidden rounded-[28px] border-2 border-[#1a1a1a] bg-[#FFF8EF] shadow-[8px_8px_0_#1a1a1a]">
-            <div className="relative bg-[#F29013] px-6 pb-9 pt-6 sm:px-8">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage: "radial-gradient(#fff 1.5px, transparent 1.5px)",
-                  backgroundSize: "18px 18px",
-                }}
-                aria-hidden="true"
-              />
-              <h2 className="relative font-heading text-2xl font-semibold leading-tight text-[#1a1a1a] sm:text-[1.75rem]">
+          <div className="overflow-hidden rounded-[28px] border-[0.80px] border-[#000]/10 bg-[#F3F3FE99] " style={{ boxShadow: layeredShadow }}>
+            <div className="px-6 py-8 sm:px-8 sm:py-8">
+              <span className="relative font-body text-2xl font-semibold leading-tight text-[#1a1a1a] sm:text-[1.75rem]">
                 {formTitle}
-              </h2>
-              <p className="relative mt-1 font-body text-sm text-[#1a1a1a]/80">{formDescription}</p>
-              <svg
-                viewBox="0 0 500 40"
-                preserveAspectRatio="none"
-                className="absolute -bottom-px left-0 h-6 w-full"
-                aria-hidden="true"
-              >
-                <path
-                  d="M0 22 C 60 4, 120 38, 190 20 S 320 2, 380 20 S 470 34, 500 18 L500 40 L0 40 Z"
-                  fill="#FFF8EF"
-                />
-              </svg>
-            </div>
-
-            <div className="px-6 pb-6 pt-3 sm:px-8 sm:pb-8">
+              </span>
+              <p className="relative mt-1 font-body text-sm text-[#1a1a1a]/80 mb-6">{formDescription}</p>
               <ContactForm
-                formClassName="rounded-2xl"
-                inputClassName="[&_input]:h-11 [&_input]:rounded-xl [&_input]:border-2 [&_input]:border-[#1a1a1a]/15 [&_input]:bg-white [&_input:focus]:border-[#F29013] [&_textarea]:h-24 [&_textarea]:resize-none [&_textarea]:rounded-xl [&_textarea]:border-2 [&_textarea]:border-[#1a1a1a]/15 [&_textarea]:bg-white [&_textarea:focus]:border-[#F29013]"
-                buttonClassName="mt-2"
-              />
+              showLabels
+              showConsent
+              termsUrl="/terms-and-conditions"
+              privacyUrl="/privacy-policy"
+              formClassName="rounded-2xl [&_textarea]:h-[113px] [&_textarea]:resize-none [&_textarea]:rounded-3xl [&_textarea]:border-[0.8px] [&_textarea]:border-[#F29013] [&_textarea]:bg-white [&_textarea]:shadow-[inset_0_-2.39px_0_0_#E4EA23,inset_0_0.8px_0_0_#FFFFFF,0_2.2px_1.76px_0_#F29013,0_2.2px_1.76px_0_rgba(26,0,108,0.0197)] [&_textarea]:outline-none [&_textarea]:ring-0 [&_textarea:focus]:outline-none [&_textarea:focus]:ring-0 [&_textarea:focus]:border-[#F29013]"
+              inputClassName="[&_input]:h-[45px] [&_input]:rounded-full [&_input]:border-[0.8px] [&_input]:border-[#F29013] [&_input]:bg-white [&_input]:shadow-[inset_0_-2.39px_0_0_#E4EA23,inset_0_0.8px_0_0_#FFFFFF,0_2.2px_1.76px_0_#F29013,0_2.2px_1.76px_0_rgba(26,0,108,0.0197)] [&_input]:outline-none [&_input]:ring-0 [&_input:focus]:outline-none [&_input:focus]:ring-0 [&_input:focus]:border-[#F29013]"
+              buttonClassName="mt-2 w-full bg-[#F29013] h-14"
+/>
             </div>
           </div>
+           <img
+              src="images/ele1.png"
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-18 top-6 w-[40px] sm:top-10 sm:w-[62px]"
+            />
         </motion.div>
       </div>
     </section>
@@ -261,7 +275,7 @@ function PageHero({
         src="images/herobg.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none relative z-0 -mt-[12%] block w-full lg:-mt-[22%]"
+        className="pointer-events-none relative z-0 -mt-[12%] block w-full lg:-mt-[28%]"
       />
     </div>
   );
@@ -272,46 +286,58 @@ function PageHero({
 /* ------------------------------------------------------------------ */
 function LegalHero({ badge, title, description, breadcrumbs, lastUpdated }) {
   return (
-    <section className="relative overflow-x-clip bg-[#FAEDDD] px-5 pb-14 pt-12 sm:px-6 sm:pb-16 sm:pt-16 lg:pb-20">
+    <>
+     <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-[#FAEDDD] pb-[16%] pt-12 sm:min-h-[calc(100svh-5rem)] sm:pt-16 lg:pb-[18%]">
       <img
         src="images/dotted.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-0 w-[50px] sm:w-[82px]"
+        decoding="async"
+        className="pointer-events-none absolute left-0 top-0 -z-10 w-[50px] sm:w-[82px]"
       />
       <img
         src="images/dotted.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 hidden w-[82px] rotate-180 sm:block"
+        decoding="async"
+        className="pointer-events-none absolute right-0 top-1/3 -z-10 hidden w-[82px] rotate-180 sm:block"
       />
-
+ 
+      {/* Wave sits inside the section, behind the text, no negative margins */}
+      <img
+        src="images/herobg.png"
+        alt=""
+        aria-hidden="true"
+        decoding="async"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 block w-full select-none"
+      />
+ 
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={viewport}
-        className="relative mx-auto max-w-3xl text-center"
+        className="mx-auto w-full max-w-[1600px] px-5 text-left sm:px-6 md:px-12 lg:px-16"
       >
-        <Breadcrumbs items={breadcrumbs} center />
+        <Breadcrumbs items={breadcrumbs} align="start" />
         {badge && <Badge>{badge}</Badge>}
-
+ 
         <motion.h1
           variants={fadeUp}
-          className="mt-5 font-heading text-[2.25rem] font-medium leading-[1.1] sm:text-5xl lg:text-6xl"
+          className="mt-5 max-w-4xl text-balance font-heading text-[2.25rem] font-medium leading-[1.1] sm:text-5xl lg:text-6xl"
         >
           {title}
         </motion.h1>
-
+ 
         {description && (
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-5 max-w-2xl font-body text-base leading-7 text-neutral-700 md:text-lg"
+            className="mt-5 max-w-2xl font-body text-base leading-7 text-neutral-700 md:text-lg"
           >
             {description}
           </motion.p>
         )}
-
+ 
         {lastUpdated && (
           <motion.p
             variants={fadeUp}
@@ -322,6 +348,7 @@ function LegalHero({ badge, title, description, breadcrumbs, lastUpdated }) {
         )}
       </motion.div>
     </section>
+    </>
   );
 }
 

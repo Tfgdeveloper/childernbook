@@ -5,7 +5,7 @@ import Container from "../ui/Container";
 
 
 
-function Services() {
+function ServicesSection() {
   const containerVariants = {
     hidden: {},
     visible: {
@@ -95,6 +95,29 @@ function Services() {
                 description="Get everything you need to take your book from manuscript to a professionally published book."
                 
                 />
+                <Card
+                className="bg-[#F7DFC5] hover:bg-[#FAEDDD]"
+                icon={<img src="images/icon.png" className=""/>}
+                title="Book Design"
+                description="Beautiful professional designs created to make your book stand out and leave a lasting impression."
+                
+                />
+
+                <Card
+                className="bg-[#F7DFC5] hover:bg-[#FAEDDD]"
+                icon={<img src="images/icon.png" className=""/>}
+                title="Professional Editing"
+                description="Refine your manuscript with professional editing and proofreading that brings clarity to your story."
+                
+                />
+
+                <Card
+                className="bg-[#F7DFC5] hover:bg-[#FAEDDD]"
+                icon={<img src="images/icon.png" className=""/>}
+                title="Publishing"
+                description="Get everything you need to take your book from manuscript to a professionally published book."
+                
+                />
             </div>
             </Container>
             <img src="images/vector.png" className="w-full rotate-180"/>
@@ -103,4 +126,4 @@ function Services() {
   );
 }
 
-export default Services;
+export default ServicesSection;

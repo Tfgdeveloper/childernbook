@@ -5,7 +5,7 @@ import Container from "../ui/Container";
 
 
 
-function Services() {
+function MissionSection() {
   const containerVariants = {
     hidden: {},
     visible: {
@@ -71,9 +71,9 @@ function Services() {
             </motion.div>
 
             {/* Cards */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <Card
-                className="bg-[#F7DFC5] hover:bg-[#FAEDDD]"
+                className="bg-transparent rounded-none hover:bg-[#F29013] hover:rounded-2xl  hover:border-none"
                 icon={<img src="images/icon.png" className=""/>}
                 title="Book Design"
                 description="Beautiful professional designs created to make your book stand out and leave a lasting impression."
@@ -81,7 +81,7 @@ function Services() {
                 />
 
                 <Card
-                className="bg-[#F7DFC5] hover:bg-[#FAEDDD]"
+                className="bg-transparent rounded-none border-l border-[#BABABA] hover:bg-[#F29013] hover:rounded-2xl  hover:border-none"
                 icon={<img src="images/icon.png" className=""/>}
                 title="Professional Editing"
                 description="Refine your manuscript with professional editing and proofreading that brings clarity to your story."
@@ -89,7 +89,15 @@ function Services() {
                 />
 
                 <Card
-                className="bg-[#F7DFC5] hover:bg-[#FAEDDD]"
+                className="bg-transparent rounded-none border-l border-[#BABABA] hover:bg-[#F29013] hover:rounded-2xl  hover:border-none"
+                icon={<img src="images/icon.png" className=""/>}
+                title="Professional Editing"
+                description="Refine your manuscript with professional editing and proofreading that brings clarity to your story."
+                
+                />
+
+                <Card
+                className="bg-transparent rounded-none border-l border-[#BABABA] hover:bg-[#F29013] hover:rounded-2xl  hover:border-none"
                 icon={<img src="images/icon.png" className=""/>}
                 title="Publishing"
                 description="Get everything you need to take your book from manuscript to a professionally published book."
@@ -103,4 +111,4 @@ function Services() {
   );
 }
 
-export default Services;
+export default MissionSection;

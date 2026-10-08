@@ -78,7 +78,9 @@ const ImageGridSection = ({
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative aspect-square overflow-hidden"
+              className="group relative aspect-square overflow-hidden hover:scale-110 transition-transform
+                  duration-700
+                  ease-[cubic-bezier(0.19,1,0.22,1)]"
             >
               <img
                 src={image.src}
@@ -87,21 +89,12 @@ const ImageGridSection = ({
                   h-full
                   w-full
                   object-cover
-                  transition-transform
-                  duration-700
-                  ease-[cubic-bezier(0.19,1,0.22,1)]
-                  group-hover:scale-110
+                  
+                  
                 "
               />
 
-              <div
-                className="
-                  absolute inset-0
-                  bg-black/0
-                  transition-all duration-500
-                  group-hover:bg-black/10
-                "
-              />
+              
             </motion.div>
           ))}
         </motion.div>

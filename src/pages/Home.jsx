@@ -21,20 +21,19 @@ import img10 from "../assets/illustration/10.png";
 import img11 from "../assets/illustration/11.png";
 import img12 from "../assets/illustration/12.png";
 
-import image1 from "../assets/book/1.png";
-import image2 from "../assets/book/2.png";
-import image3 from "../assets/book/3.png";
-import image4 from "../assets/book/4.png";
-import image5 from "../assets/book/5.png";
-import image6 from "../assets/book/6.png";
-import image7 from "../assets/book/7.png";
-import image8 from "../assets/book/8.png";
-import image9 from "../assets/book/9.png";
+import image1 from "../assets/book/01.png";
+import image2 from "../assets/book/02.png";
+import image3 from "../assets/book/03.png";
+import image4 from "../assets/book/04.png";
+import image5 from "../assets/book/05.png";
+import image6 from "../assets/book/06.png";
+import image7 from "../assets/book/07.png";
+import image8 from "../assets/book/08.png";
+import image9 from "../assets/book/09.png";
 import image10 from "../assets/book/10.png";
 import image11 from "../assets/book/11.png";
 import image12 from "../assets/book/12.png";
-import Navbar from "../components/sections/Navbar";
-import Footer from "../components/sections/Footer";
+
 
 
 
